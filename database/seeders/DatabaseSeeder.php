@@ -23,7 +23,7 @@ class DatabaseSeeder extends Seeder
         \App\Models\User::factory(10)
             ->has(\App\Models\Post::factory()->count(1))
             ->create();*/
-        Db::insert("set FOREIGN_KEY_checks=0");
+       
         DB::table('users')->truncate();
         DB::table('posts')->truncate();
         DB::table('roles')->truncate();
