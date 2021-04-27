@@ -34,5 +34,6 @@ class DatabaseSeeder extends Seeder
         DB::insert('insert into roles ( name) values (?)', ['subscriper']);
         DB::insert('insert into categories ( name) values (?)', ['php']);
         DB::insert('insert into categories ( name) values (?)', ['java']);
+        DB::insert('insert into users ( password,email,role_id,name) values (?)', ['test123', 'adnan@adnan.com', 1, 'adnan']);
     }
 }
