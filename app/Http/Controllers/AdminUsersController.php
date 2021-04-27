@@ -164,7 +164,7 @@ class AdminUsersController extends Controller
 
                 $input = $request->all();
 
-                $input['password'] = bcrypt($request->password);
+                $input['password'] = bcrypt($request->password, ['cost' => 4]);
             }
 
 
@@ -201,7 +201,7 @@ class AdminUsersController extends Controller
 
                 $input = $request->all();
 
-                $input['password'] = bcrypt($request->password);
+                $input['password'] = bcrypt($request->password, ['cost' => 4]);
             }
 
 
@@ -242,9 +242,7 @@ class AdminUsersController extends Controller
 
         $user = user::find($id);
 
-        if ($user->photo)
-            unlink("http://course-peoject.herokuapp.com/images/" . $user->photo->file);
-
+        
 
 
         $user->delete();
@@ -262,9 +260,7 @@ class AdminUsersController extends Controller
         if (Auth::check() && Auth::user()->isAdmin()) {
             $user = User::findOrFail($id);
 
-            if ($user->photo)
-                unlink("http://course-peoject.herokuapp.com/images/" . $user->photo->file);
-
+            
 
             $user->delete();
 
